@@ -1,0 +1,23 @@
+/* app styles go here */
+body {
+    font-family: Arial, SansSerif;
+}
+h1 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: deepskyblue;
+    padding: .3em;
+}
+th {
+    text-align: left;
+}
+td, th {
+    padding: 5px;
+}
+.row-shadow td {
+    background-color: #ddd;
+}
+table {
+    border: 1px solid #bbb;
+    border-collapse: collapse;
+}

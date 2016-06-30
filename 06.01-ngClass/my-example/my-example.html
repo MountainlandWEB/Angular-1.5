@@ -1,0 +1,17 @@
+<h1>My Example</h1>
+
+Simple ngClass to indicate email format error.
+
+<div>
+    <input type="text" ng-model="$ctrl.email" ng-change="$ctrl.doChange()"
+           ng-class="{ 'email-error': $ctrl.hasError }">
+</div>
+<br />
+
+Tertiary (if/else) ngClass to indicate email format success or error.
+
+<div>
+    <input type="text" ng-model="$ctrl.email" ng-change="$ctrl.doChange()"
+           ng-class="$ctrl.hasError ? 'email-error' : 'email-success'">
+</div>
+<br />

@@ -1,0 +1,19 @@
+<h1>Star Wars Characters</h1>
+
+<div>
+Filter: <input type="text" ng-model="$ctrl.searchText">
+</div>
+<br />
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Weight</th>
+    </tr>
+    <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText" ng-class-odd="'row-shadow'">
+        <td>{{ character.name }}</td>
+        <td>{{ character.gender }}</td>
+        <td>{{ $ctrl.getWeightInPounds(character) | number:1 }} lbs</td>
+    </tr>
+</table>

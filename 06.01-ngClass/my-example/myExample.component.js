@@ -6,19 +6,19 @@
             controller: myExampleController
         });
 
-    function myExampleController($filter, $scope) {
+    function myExampleController($filter) {
         // put all code for this component in here (click handlers, component setup, UI-related code)
+        var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
         var self = this;
-        self.name = $filter('uppercase')('Hansel');
+        self.email = '';
+        self.hasError = true;
         self.doChange = doChange;
 
         function doChange() {
-            self.name = $filter('uppercase')(self.name);
+            self.email = $filter('lowercase')(self.email);
+            self.hasError = !emailRegex.test(self.email);
         }
-
-        // $scope.$watch("$ctrl.name", function(newval, oldval) {
-        //     self.name = $filter('uppercase')(newval);
-        // });
     }
 
 })();
