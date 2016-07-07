@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controllers</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script>
+        angular.module('app', [])
+                .controller('Example', function ($scope) {
+                    var vm = this;
+                    vm.input = 4;
+                    vm.double = function () {
+                        vm.result = vm.input * 2;
+                    }
+                });
+    </script>
+</head>
+<body ng-app="app" ng-controller="Example as hey">
+    <input type="number" ng-model="hey.input"/>
+    <button ng-click="hey.double()">Calculate</button>
+    <br>
+    <span>The double of {{ hey.input }} is {{ hey.result }}.</span>
+</body>
+</html>
