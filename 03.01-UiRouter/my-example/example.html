@@ -1,0 +1,20 @@
+<script>
+    angular
+            .module('myapp',[])
+            .controller('TodosController', function($scope, $rootScope) {
+                $scope.myvariable = 'text'
+                $scope.handleClickEvent = function(param) {
+                    $scope.myvariable = param;
+                }
+            });
+
+    function myfun(param1 /*boolean*/, param2 /*string*/) {
+        //some code that uses param1 and param2
+    }
+
+    myfun('mystring', true) //wrong order of params
+    myfun(true, 'mystring') //right order of params
+
+</script>
+<body ng-controller="MyController">
+</body>
