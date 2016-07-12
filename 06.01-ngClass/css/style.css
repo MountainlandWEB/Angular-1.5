@@ -15,3 +15,7 @@ h1 {
 .email-success {
     border: 3px green solid;
 }
+
+.valid:after {
+    content: '\a0\1F601';
+}

@@ -7,11 +7,11 @@ Filter: <input type="text" ng-model="$ctrl.searchText">
 
 <table>
     <tr>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Weight</th>
+        <th ng-click="$ctrl.selfSort('name')">Name</th>
+        <th ng-click="$ctrl.selfSort('gender')">Gender</th>
+        <th ng-click="$ctrl.selfSort('mass')">Weight</th>
     </tr>
-    <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText" ng-class-odd="'row-shadow'">
+    <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText | orderBy: $ctrl.sort" ng-class-odd="'row-shadow'">
         <td>{{ character.name }}</td>
         <td>{{ character.gender }}</td>
         <td>{{ $ctrl.getWeightInPounds(character) | number:1 }} lbs</td>

@@ -9,18 +9,24 @@
     function myExampleController() {
         // put all code for this component in here (click handlers, component setup, UI-related code)
         var self = this;
+        self.sort = '';
         self.getWeightInPounds = getWeightInPounds;
+        self.selfSort = selfSort;
 
         function getWeightInPounds(character) {
             return character.mass * 2.20462;
         }
 
+        function selfSort(sort) {
+            self.sort = sort;
+            
+        }
         // sample data from swapi.co
         self.characters = [
             {
                 "name": "Luke Skywalker",
                 "height": "172",
-                "mass": "77",
+                "mass": 77,
                 "hair_color": "blond",
                 "skin_color": "fair",
                 "eye_color": "blue",
@@ -30,7 +36,7 @@
             {
                 "name": "C-3PO",
                 "height": "167",
-                "mass": "75",
+                "mass": 75,
                 "hair_color": "n/a",
                 "skin_color": "gold",
                 "eye_color": "yellow",
@@ -40,7 +46,7 @@
             {
                 "name": "R2-D2",
                 "height": "96",
-                "mass": "32",
+                "mass": 32,
                 "hair_color": "n/a",
                 "skin_color": "white, blue",
                 "eye_color": "red",
@@ -50,7 +56,7 @@
             {
                 "name": "Darth Vader",
                 "height": "202",
-                "mass": "136",
+                "mass": 136,
                 "hair_color": "none",
                 "skin_color": "white",
                 "eye_color": "yellow",
@@ -60,7 +66,7 @@
             {
                 "name": "Leia Organa",
                 "height": "150",
-                "mass": "49",
+                "mass": 49,
                 "hair_color": "brown",
                 "skin_color": "light",
                 "eye_color": "brown",

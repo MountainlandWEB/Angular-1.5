@@ -11,13 +11,13 @@
         var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         var self = this;
-        self.email = '';
-        self.hasError = true;
+        self.name = '';
+        self.match = false;
+        var myName = 'Matt';
         self.doChange = doChange;
 
         function doChange() {
-            self.email = $filter('lowercase')(self.email);
-            self.hasError = !emailRegex.test(self.email);
+            self.match = myName === self.name;
         }
     }
 
