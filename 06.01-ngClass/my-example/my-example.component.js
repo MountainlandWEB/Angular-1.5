@@ -12,12 +12,20 @@
 
         var self = this;
         self.email = '';
+        self.name = '';
         self.hasError = true;
+        self.nameMatches = false;
         self.doChange = doChange;
+        self.changedName = changedName;
+        var myName = 'Todd';
 
         function doChange() {
             self.email = $filter('lowercase')(self.email);
             self.hasError = !emailRegex.test(self.email);
+        }
+
+        function changedName() {
+            self.nameMatches = myName === self.name;
         }
     }
 
