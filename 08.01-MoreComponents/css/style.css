@@ -17,7 +17,26 @@ td, th {
 .row-shadow td {
     background-color: #ddd;
 }
+.hover-row td {
+    background-color: deepskyblue;
+}
 table {
     border: 1px solid #bbb;
     border-collapse: collapse;
+    cursor: default;
+}
+.sortable {
+    cursor: s-resize;
+}
+th.sort-asc:after {
+    content: '\a0\2193';
+    /*font-family: sans-serif;*/
+}
+th.sort-desc:after {
+    content: '\a0\2191';
+    /*font-family: sans-serif;*/
+}
+th.sort-none:after {
+    content: '\a0\a0';
+    /*font-family: sans-serif;*/
 }
