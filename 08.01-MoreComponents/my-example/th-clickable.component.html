@@ -1,0 +1,4 @@
+<!--<th ng-click="$ctrl.sort('name')" class="sortable"
+    ng-class="$ctrl.orderBy.indexOf('name') > -1 ? $ctrl.sortClass : 'sort-none'">Name</th>-->
+<th ng-click="$ctrl.sort('{{ $ctrl.field }}')" class="sortable"
+    ng-class="$ctrl.orderBy.indexOf('{{ $ctrl.field }}') > -1 ? $ctrl.sortClass : 'sort-none'">{{ $ctrl.label }}</th>

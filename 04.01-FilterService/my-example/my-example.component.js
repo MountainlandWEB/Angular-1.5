@@ -2,7 +2,7 @@
 
     angular.module('myApp')
         .component('myExample', { // the tag for using this is <my-example>
-            templateUrl: "my-example/my-example.html",
+            templateUrl: "my-example/my-example.component.html",
             controller: myExampleController
         });
 

@@ -8,9 +8,14 @@ Filter: <input type="text" ng-model="$ctrl.searchText">
 <table ng-mouseleave="$ctrl.row=-1">
     <tr ng-mouseover="$ctrl.row=-1" >
         <th>#</th>
-        <th ng-click="$ctrl.sort('name')" class="sortable" ng-class="$ctrl.orderBy.indexOf('name') > -1 ? $ctrl.sortClass : 'sort-none'">Name</th>
+        <!--<th ng-click="$ctrl.sort('name')" class="sortable" ng-class="$ctrl.orderBy.indexOf('name') > -1 ? $ctrl.sortClass : 'sort-none'">Name</th>-->
+        <!--<th ng-click="$ctrl.sort('gender')" class="sortable" ng-class="$ctrl.orderBy.indexOf('gender') > -1 ? $ctrl.sortClass : 'sort-none'">Gender</th>-->
+        <!--<th ng-click="$ctrl.sort('mass')" class="sortable" ng-class="$ctrl.orderBy.indexOf('mass') > -1 ? $ctrl.sortClass : 'sort-none'">Weight</th>-->
+        <th-clickable field="name" label="Name" sort-class="$ctrl.sortClass" order-by="$ctrl.orderBy" ng-click="$ctrl.sort('name')"></th-clickable>
         <th ng-click="$ctrl.sort('gender')" class="sortable" ng-class="$ctrl.orderBy.indexOf('gender') > -1 ? $ctrl.sortClass : 'sort-none'">Gender</th>
         <th ng-click="$ctrl.sort('mass')" class="sortable" ng-class="$ctrl.orderBy.indexOf('mass') > -1 ? $ctrl.sortClass : 'sort-none'">Weight</th>
+        <!--<th-clickable field="gender" label="Gender"></th-clickable>-->
+        <!--<th-clickable field="mass" label="Weight"></th-clickable>-->
     </tr>
     <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText | orderBy: $ctrl.orderBy"
             ng-class-odd="'row-shadow'" ng-mouseover="$ctrl.row=$index" ng-class="{'hover-row': $ctrl.row===$index}">
