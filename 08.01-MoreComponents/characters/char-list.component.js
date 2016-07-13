@@ -1,18 +1,30 @@
 (function(){
 
     angular.module('myApp')
-        .component('myExample', { // the tag for using this is <my-example>
-            templateUrl: "my-example/my-example.component.html",
-            controller: myExampleController
+        .component('charList', { // the tag for using this is <char-list>
+            templateUrl: "characters/char-list.component.html",
+            controller: charListController
+        })
+        .config(charListConfig);
+    
+    function charListConfig($stateProvider) {
+        $stateProvider.state('main', {
+            url: '/main',
+            template: '<char-list></char-list>'
         });
+    }
 
-    function myExampleController() {
-        // put all code for this component in here (click handlers, component setup, UI-related code)
+    function charListController() {
+        // variables
         var self = this;
-        self.getWeightInPounds = getWeightInPounds;
-        self.sort = sort;
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
+        self.columns = ['name','gender','mass'];
+        self.selectedChar = undefined;
+        // functions
+        self.getWeightInPounds = getWeightInPounds;
+        self.sort = sort;
+        self.selectChar = selectChar;
 
         function getWeightInPounds(character) {
             return character.mass * 2.20462;
@@ -26,6 +38,10 @@
                 self.sortClass = 'sort-desc';
             }
             self.orderBy = newOrderBy;
+        }
+
+        function selectChar(char) {
+            self.selectedChar = char;
         }
 
         // sample data from swapi.co
