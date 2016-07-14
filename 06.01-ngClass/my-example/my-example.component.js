@@ -1,8 +1,8 @@
 (function(){
 
     angular.module('myApp')
-        .component('myExample', { // the tag for using this is <my-example>
-            templateUrl: "my-example/my-example.html",
+        .component('myExample', { // the tag for using this is <characters>
+            templateUrl: "characters/characters.component.html",
             controller: myExampleController
         });
 
@@ -12,12 +12,20 @@
 
         var self = this;
         self.email = '';
+        self.name = '';
         self.hasError = true;
+        self.nameMatches = false;
         self.doChange = doChange;
+        self.changedName = changedName;
+        var myName = 'Todd';
 
         function doChange() {
             self.email = $filter('lowercase')(self.email);
             self.hasError = !emailRegex.test(self.email);
+        }
+
+        function changedName() {
+            self.nameMatches = myName === self.name;
         }
     }
 
