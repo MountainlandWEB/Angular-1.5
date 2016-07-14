@@ -15,3 +15,13 @@ h1 {
 .email-success {
     border: 3px green solid;
 }
+
+.failed{
+    border: 2px red solid;
+    box-shadow: 2px 8px 10px red;
+}
+.success{
+    border: 2px green solid;
+    box-shadow: 2px 8px 10px green;
+}
+

@@ -1,8 +1,9 @@
+var testVar = 'Dar';
 (function(){
 
     angular.module('myApp')
         .component('myExample', { // the tag for using this is <my-example>
-            templateUrl: "my-example/my-example.html",
+            templateUrl: "my-example/my-example.component.html",
             controller: myExampleController
         });
 
@@ -10,11 +11,17 @@
         // put all code for this component in here (click handlers, component setup, UI-related code)
         var self = this;
         self.getWeightInPounds = getWeightInPounds;
+        self.sortByThis = sortByThis;
+        self.sortBy = '';
 
         function getWeightInPounds(character) {
+            //console.log(character);
             return character.mass * 2.20462;
         }
-
+        function sortByThis(){
+            self.sortBy = term;
+            console.log("clicked");
+        }
         // sample data from swapi.co
         self.characters = [
             {
