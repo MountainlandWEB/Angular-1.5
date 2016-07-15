@@ -1,13 +1,14 @@
 (function(){
 
     angular.module('myApp')
-        .component('myExample', { // the tag for using this is <characters></characters>
-            templateUrl: "characters/characters.component.html",
-            controller: myExampleController
+        .component('componentTwo', { // the tag for using this is <my-example></my-example>
+            templateUrl: "component-two/component-two.html",
+            // template: '<h2>Controller One Title</h2>',
+            controller: ControllerTwo
         });
 
     // here we use "Dependency Injection" to inject the Angular $log service into this controller
-    function myExampleController($log, $location) {
+    function ControllerTwo($log, $location) {
         // put all code for this component in here (click handlers, component setup, UI-related code)
         // this line prints the full URL to the console
         $log.debug($location.absUrl());

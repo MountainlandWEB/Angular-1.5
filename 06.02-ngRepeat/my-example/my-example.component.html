@@ -8,12 +8,12 @@
 <table>
     <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Weight</th>
+        <th ng-click="$ctrl.setSort('name')">Name</th>
+        <th ng-click="$ctrl.setSort('gender')">Gender</th>
+        <th ng-click="$ctrl.setSort('mass')">Weight</th>
     </tr>
-    <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText | orderBy: 'name'"
-        ng-class-odd="'row-shadow'">
+    <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText | orderBy: $ctrl.sort"
+        ng-class-oddx="'row-shadow'" ng-class="{ 'row-shadow':$even }">
         <td>{{ $index+1 }}</td>
         <td>{{ character.name }}</td>
         <td>{{ character.gender }}</td>

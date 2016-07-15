@@ -8,13 +8,3 @@ h1 {
     background-color: deepskyblue;
     padding: .3em;
 }
-.email-error {
-    border: 3px red solid;
-}
-
-.email-success {
-    border: 3px green solid;
-}
-.emoji-class:after {
-    content: '\a0\1F601';
-}
