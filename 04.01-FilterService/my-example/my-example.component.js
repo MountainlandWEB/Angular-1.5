@@ -1,8 +1,8 @@
 (function(){
 
     angular.module('myApp')
-        .component('myExample', { // the tag for using this is <my-example>
-            templateUrl: "my-example/my-example.html",
+        .component('myExample', { // the tag for using this is <characters>
+            templateUrl: "characters/characters.component.html",
             controller: myExampleController
         });
 
