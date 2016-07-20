@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controller Exercise</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script>
+        angular.module('app', [])
+                .controller('ExampleController', function() {
+                    var vm = this;
+
+                    vm.result = 0;
+
+                    vm.input = 4;
+                    vm.double = function(param) {
+                        console.log(param)
+                        vm.result = vm.input * 2;
+                    }
+                });
+    </script>
+</head>
+<body ng-app="app" ng-controller="ExampleController as hey">
+    <input type="number" ng-model="hey.input"/>
+    <button ng-click="hey.double(hey.result)">Calculate</button>
+    <br>
+    <span ng-hide="!hey.result">The double of {{ hey.input }} is {{ hey.result }}.</span>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
