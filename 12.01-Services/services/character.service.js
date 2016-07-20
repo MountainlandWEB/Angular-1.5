@@ -5,6 +5,7 @@
 
     function characterService() {
         var self = this;
+        self.selectedChar = undefined;
         self.getRandomCharacter = getRandomCharacter;
 
         function getRandomCharacter() {
@@ -15,6 +16,7 @@
             for (var c=0, clen=self.characters.length; c<clen; c++) {
                 self.characters[c].weight = self.characters[c].mass * 2.20462;
             }
+            self.selectedChar = getRandomCharacter();
         }
 
         // sample data from swapi.co

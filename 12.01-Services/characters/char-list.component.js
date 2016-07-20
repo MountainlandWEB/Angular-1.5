@@ -21,7 +21,7 @@
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
         self.columns = ['name','gender','mass'];
-        self.selectedChar = characterService.getRandomCharacter();
+        self.selectedChar = characterService.selectedChar;
         self.characters = characterService.characters;
 
         // functions
@@ -40,11 +40,11 @@
         }
 
         function selectChar(char) {
-            self.selectedChar = char;
+            self.selectedChar = characterService.selectedChar = char;
         }
 
         function close() {
-            self.selectedChar = undefined;
+            self.selectedChar = characterService.selectedChar = undefined;
         }
 
     }
