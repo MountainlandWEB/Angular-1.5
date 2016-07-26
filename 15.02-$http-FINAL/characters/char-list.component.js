@@ -21,8 +21,11 @@
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
         self.columns = ['name','gender','mass'];
-        self.selectedChar = characterService.selectedChar;
-        self.characters = characterService.characters;
+
+        characterService.characters().then(function(response) {
+            self.characters = response.data;
+            self.selectedChar = self.characters[characterService.getRandomCharacterIndex(self.characters.length)];
+        })
 
         // functions
         self.sort = sort;
