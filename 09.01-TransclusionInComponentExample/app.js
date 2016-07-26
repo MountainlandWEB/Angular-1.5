@@ -3,7 +3,7 @@
     angular.module('app', [])
         .component('card', {
             bindings: {
-                artist: '@'
+                artist: '@myArtist'
             },
             template:
                 '<div>' +
