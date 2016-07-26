@@ -1,59 +1,40 @@
-(function(){
+(function () {
 
-    // A component is like a controller with a template.
-    
     angular.module('myApp')
-        .component('charList', { // the tag for using this is <char-list>
-            templateUrl: "characters/char-list.component.html",
-            controller: charListController
-        })
-        .config(charListConfig);
-    
-    function charListConfig($stateProvider) {
-        $stateProvider.state('main', {
-            url: '/main',
-            template: '<char-list></char-list>'
-        });
-    }
+        .service('characterService', characterService);
 
-    function charListController() {
-        // variables
+    function characterService($q, $timeout) {
         var self = this;
-        // Declaring all of these 'selfs' makes them available to the controller.
-        self.orderBy = 'name';
-        self.sortClass= 'sort-asc';
-        self.columns = ['name','gender','mass'];
         self.selectedChar = undefined;
-        // functions
-        self.getWeightInPounds = getWeightInPounds;
-        self.sort = sort;
-        self.selectChar = selectChar;
-        self.closeDetail = closeDetail;
+        self.getRandomCharacter = getRandomCharacter;
 
-        function getWeightInPounds(character) {
-            return character.mass * 2.20462;
+        function getRandomCharacter() {
+            return self.characters().then(function(characters) {
+                return characters[Math.floor(Math.random() * self.chars.length)];
+            });
         }
-        
-        function sort(attribute) {
-            self.sortClass = 'sort-asc'; // down arrow
-            var newOrderBy = attribute;
-            if (self.orderBy === attribute) {
-                newOrderBy = '-' + attribute;
-                self.sortClass = 'sort-desc';
+
+        function init() {
+            for (var c = 0, clen = self.characters.length; c < clen; c++) {
+                self.characters[c].weight = self.characters[c].mass * 2.20462;
             }
-            self.orderBy = newOrderBy;
-        }
-
-        function selectChar(char) {
-            self.selectedChar = char;
-        }
-        // This function sets the character selection back to 'undefined' or unselected.
-        function closeDetail() {
-            self.selectedChar = undefined;
+            getRandomCharacter().then(function(character) {
+                self.selectedChar = character;
+            });
         }
 
         // sample data from swapi.co
-        self.characters = [
+        self.characters = function() {
+            var deferred = $q.defer();
+
+            $timeout(function () {
+                deferred.resolve(self.chars);
+            }, 2000);
+
+            return deferred.promise;
+        };
+
+        self.chars = [
             {
                 "name": "Luke Skywalker",
                 "height": 172,
@@ -105,6 +86,8 @@
                 "gender": "female"
             }
         ];
+
+        init();
     }
 
 })();

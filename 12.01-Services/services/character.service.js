@@ -1,55 +1,22 @@
-(function(){
+(function () {
 
-    // A component is like a controller with a template.
-    
     angular.module('myApp')
-        .component('charList', { // the tag for using this is <char-list>
-            templateUrl: "characters/char-list.component.html",
-            controller: charListController
-        })
-        .config(charListConfig);
-    
-    function charListConfig($stateProvider) {
-        $stateProvider.state('main', {
-            url: '/main',
-            template: '<char-list></char-list>'
-        });
-    }
+        .service('characterService', characterService);
 
-    function charListController() {
-        // variables
+    function characterService() {
         var self = this;
-        // Declaring all of these 'selfs' makes them available to the controller.
-        self.orderBy = 'name';
-        self.sortClass= 'sort-asc';
-        self.columns = ['name','gender','mass'];
         self.selectedChar = undefined;
-        // functions
-        self.getWeightInPounds = getWeightInPounds;
-        self.sort = sort;
-        self.selectChar = selectChar;
-        self.closeDetail = closeDetail;
+        self.getRandomCharacter = getRandomCharacter;
 
-        function getWeightInPounds(character) {
-            return character.mass * 2.20462;
+        function getRandomCharacter() {
+            return self.characters[Math.floor(Math.random()*self.characters.length)];
         }
-        
-        function sort(attribute) {
-            self.sortClass = 'sort-asc'; // down arrow
-            var newOrderBy = attribute;
-            if (self.orderBy === attribute) {
-                newOrderBy = '-' + attribute;
-                self.sortClass = 'sort-desc';
+
+        function init() {
+            for (var c=0, clen=self.characters.length; c<clen; c++) {
+                self.characters[c].weight = self.characters[c].mass * 2.20462;
             }
-            self.orderBy = newOrderBy;
-        }
-
-        function selectChar(char) {
-            self.selectedChar = char;
-        }
-        // This function sets the character selection back to 'undefined' or unselected.
-        function closeDetail() {
-            self.selectedChar = undefined;
+            self.selectedChar = getRandomCharacter();
         }
 
         // sample data from swapi.co
@@ -105,6 +72,8 @@
                 "gender": "female"
             }
         ];
+
+        init();
     }
 
 })();
