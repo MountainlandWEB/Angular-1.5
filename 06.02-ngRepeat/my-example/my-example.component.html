@@ -1,0 +1,22 @@
+<h1>Star Wars Characters</h1>
+
+<div>
+    Filter: <input type="text" ng-model="$ctrl.searchText">
+</div>
+<br />
+
+<table>
+    <tr>
+        <th>#</th>
+        <th ng-click="$ctrl.setSort('name')">Name</th>
+        <th ng-click="$ctrl.setSort('gender')">Gender</th>
+        <th ng-click="$ctrl.setSort('mass')">Weight</th>
+    </tr>
+    <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText | orderBy: $ctrl.sort"
+        ng-class-oddx="'row-shadow'" ng-class="{ 'row-shadow':$even }">
+        <td>{{ $index+1 }}</td>
+        <td>{{ character.name }}</td>
+        <td>{{ character.gender }}</td>
+        <td>{{ $ctrl.getWeightInPounds(character) | number:1 }} lbs</td>
+    </tr>
+</table>
