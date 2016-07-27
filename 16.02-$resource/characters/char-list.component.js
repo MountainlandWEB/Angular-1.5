@@ -14,17 +14,22 @@
         });
     }
 
-    function charListController(characterService) {
+    function charListController(characterService, Character) {
 
-        // variables
+        // CONTROLLER DATA
         var self = this;
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
-        self.columns = ['name','gender','mass'];
-        self.selectedChar = characterService.selectedChar;
-        self.characters = characterService.characters;
+        self.columns = ['title','body'];
 
-        // functions
+        self.characters = Character.query();
+
+        // characterService.getCharacters().then(function(){
+        //     self.characters = characterService.characters;
+        //     self.selectedChar = characterService.selectedChar;
+        // });
+
+        // CONTROLLER FUNCTIONS (PUBLIC)
         self.sort = sort;
         self.selectChar = selectChar;
         self.close = close;
@@ -40,14 +45,7 @@
         }
 
         function selectChar(char) {
-            // this
             self.selectedChar = characterService.selectedChar = char;
-            // or this
-            self.selectedChar = char;
-            characterService.selectedChar = char;
-            // or this!
-            characterService.selectedChar = char;
-            self.selectedChar = characterService.selectedChar;
         }
 
         function close() {

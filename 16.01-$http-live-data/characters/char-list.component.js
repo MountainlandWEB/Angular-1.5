@@ -16,15 +16,25 @@
 
     function charListController(characterService) {
 
-        // variables
+        // CONTROLLER DATA
         var self = this;
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
         self.columns = ['name','gender','mass'];
-        self.selectedChar = characterService.selectedChar;
-        self.characters = characterService.characters;
 
-        // functions
+        characterService.getCharacters().then(function() {
+            self.characters = characterService.characters;
+            self.selectedChar = characterService.selectedChar;
+        });
+
+        // RESOLVE OBJECT
+        // self.resolve = {
+        //     characters: function () {
+        //         return characterService.getCharacters();
+        //     }
+        // };
+
+        // CONTROLLER FUNCTIONS (PUBLIC)
         self.sort = sort;
         self.selectChar = selectChar;
         self.close = close;
