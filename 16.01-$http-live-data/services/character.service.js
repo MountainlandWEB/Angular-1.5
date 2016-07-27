@@ -25,7 +25,8 @@
                     .then(function (response) {
                         $log.log(response);
                         self.characters = response.data.results;
-                        self.selectedChar = self.characters[self.getRandomCharacterIndex(self.characters.length)];
+                        self.selectedChar = self.characters[
+                            self.getRandomCharacterIndex(self.characters.length)];
                         deferred.resolve(self.characters);
                     }, function(error) {
                         $log.error(error);
