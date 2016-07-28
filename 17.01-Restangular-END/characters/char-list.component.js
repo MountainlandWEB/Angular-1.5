@@ -20,7 +20,7 @@
         var self = this;
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
-        self.columns = ['thumbnailUrl','title'];
+        self.columns = ['Picture','Name', 'Email', 'DOB'];
 
         // self.characters = Character.query();
 
