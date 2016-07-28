@@ -21,6 +21,7 @@
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
         self.columns = ['thumbnailUrl','title'];
+        self.selectedChar = undefined;
 
         // self.characters = Character.query();
 

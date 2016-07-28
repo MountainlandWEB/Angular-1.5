@@ -13,9 +13,16 @@
     function charDetailController() {
         var self = this;
         self.close = close;
+        self.save = save;
 
         function close() {
             self.onClose(); // call output binding
+        }
+
+        function save() {
+            self.character.name.first = self.first;
+            self.character.save();
+            self.first = '';
         }
 
     }
