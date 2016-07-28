@@ -1,0 +1,33 @@
+<div>
+    Filter: <input type="text" ng-model="$ctrl.searchText">
+</div>
+<br />
+
+<div class="list-div">
+
+    <table ng-mouseleave="$ctrl.row=-1">
+        <tr ng-mouseover="$ctrl.row=-1" >
+            <th>#</th>
+            <th ng-repeat="col in $ctrl.columns" ng-click="$ctrl.sort(col)" class="sortable"
+                ng-class="$ctrl.orderBy.indexOf(col) > -1 ? $ctrl.sortClass : 'sort-none'">{{ col | uppercase }}</th>
+       </tr>
+        <tr ng-show="!$ctrl.characters" class="row-shadow">
+            <td colspan="4">Loading characters...</td>
+        </tr>
+        <tr ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText | orderBy: $ctrl.orderBy | limitTo:10"
+                ng-class-odd="'row-shadow'" ng-mouseover="$ctrl.row=$index" ng-click="$ctrl.selectChar(character)"
+                ng-class="{'hover-row': $ctrl.row===$index, 'selected-row': $ctrl.selectedChar === character}">
+            <td>{{ $index+1 }}</td>
+            <td><img ng-src="{{ character.thumbnailUrl }}" class="thumbnail"></td>
+            <td>{{ character.title }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="detail-div">
+    <char-detail character="$ctrl.selectedChar" on-close="$ctrl.close()"></char-detail>
+</div>
+
+<br clear="both" />
+<br clear="both" />
+<a ui-sref="about">About</a>
