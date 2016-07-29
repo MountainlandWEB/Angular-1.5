@@ -1,0 +1,27 @@
+<html ng-app="myApp">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1 ui-sref="main" class="clickable">Random Names ($localStorage)</h1>
+
+    <ui-view></ui-view>
+
+    <my-footer></my-footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.2/restangular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <!-- app.js must be FIRST, since the component is added to it -->
+    <script src="app.js"></script>
+    <script src="characters/char-list.component.js"></script>
+    <script src="characters/char-detail.component.js"></script>
+    <script src="about/about.component.js"></script>
+    <script src="services/character.service.js"></script>
+    <script src="services/character.factory.js"></script>
+
+</body>
+</html>
