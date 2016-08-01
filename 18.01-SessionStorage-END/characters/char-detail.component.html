@@ -1,0 +1,8 @@
+<div ng-if="$ctrl.character">
+    <div class="close-x" ng-click="$ctrl.close()">x</div>
+    <br clear="both" />
+    <div><img ng-src="{{ $ctrl.character.picture.large }}" class="fullImage"></div>
+    <br clear="both" />
+    <div>Name: {{ $ctrl.character.name.title }} {{ $ctrl.character.name.first }} {{ $ctrl.character.name.last }}</div>
+    <div><input type="text" ng-model="$ctrl.first" placeholder="Set New First Name"> <button ng-click="$ctrl.save()">Save</button> </div>
+</div>
