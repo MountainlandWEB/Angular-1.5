@@ -15,6 +15,7 @@ h1 {
 .email-success {
     border: 3px green solid;
 }
+<<<<<<< HEAD
 
 .failed{
     border: 2px red solid;
@@ -25,3 +26,8 @@ h1 {
     box-shadow: 2px 8px 10px green;
 }
 
+=======
+.emoji-class:after {
+    content: '\a0\1F601';
+}
+>>>>>>> 58c113a863c78b2ec610c1de0035dd213cf5cb5d
