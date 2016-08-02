@@ -3,7 +3,11 @@
     angular.module('myApp')
         .service('characterService', characterService);
 
+<<<<<<< HEAD
     function characterService($log, Characters, $q, $localStorage) {
+=======
+    function characterService($log, Character, $q, $localStorage) {
+>>>>>>> 16354d4b820208f053a05cdedecd2da2c6f4dd05
         var self = this;
 
         // SERVICE DATA
@@ -22,7 +26,11 @@
         function getCharacters() {
             var deferred = $q.defer();
             if ($localStorage.characters === undefined) {
+<<<<<<< HEAD
                 Characters.getList()
+=======
+                Character.getList()
+>>>>>>> 16354d4b820208f053a05cdedecd2da2c6f4dd05
                     .then(function (data) {
                         $log.log(data);
                         self.characters = $localStorage.characters = data;
