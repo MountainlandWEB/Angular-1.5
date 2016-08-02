@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+
+            <h2>Custom Form Validation (custom field control)</h2>
+            <form novalidate name="form" class="form-horizontal css-form">
+
+                <div class="form-group" ng-class="{ 'has-error': form.inputName.$invalid && (form.$submitted || form.inputName.$touched) }">
+                    <label for="inputName" class="col-sm-2 control-label">Name:</label>
+                    <div class="col-sm-10">
+                        <input id="inputName" name="inputName" class="form-control" type="text" ng-model="vm.user.name" ng-model-options="{ updateOn: 'blur mousedown' }" required />
+                        <span class="help-block" ng-show="form.inputName.$invalid && (form.$submitted || form.inputName.$touched) ">
+                            Name is required.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': form.username.$invalid && (form.$submitted || form.username.$dirty) }">
+                    <label for="username" class="col-sm-2 control-label">Username:</label>
+                    <div class="col-sm-10">
+                        <input id="username" name="username" class="form-control" type="text" ng-model="vm.user.username" ng-model-options="{ debounce: 1000 }" required username />
+                        <span class="help-block" ng-show="form.username.$error.required && (form.$submitted || form.username.$touched) ">
+                            Username is required.
+                        </span>
+                        <span class="help-block" ng-show="form.username.$pending.username && (form.$submitted || form.username.$touched) ">
+                            Checking if this username is available...
+                        </span>
+                        <span class="help-block" ng-show="form.username.$error.username && (form.$submitted || form.username.$dirty) ">
+                            This username is already taken!
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': form.inputAge.$invalid && (form.$submitted || form.inputAge.$touched) }">
+                    <label for="inputAge" class="col-sm-2 control-label">Age:</label>
+                    <div class="col-sm-10">
+                        <input id="inputAge" name="inputAge" class="form-control" type="number" ng-model="vm.user.age" required integer min="0" max="150"/>
+                        <span class="help-block" ng-show="form.$submitted || form.inputAge.$touched">
+                            {{ vm.getIntegerErrorMessage() }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': form.inputEmail.$invalid && (form.$submitted || form.inputEmail.$touched) }">
+                    <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
+                    <div class="col-sm-10">
+                        <input id="inputEmail" name="inputEmail" class="form-control" type="email" ng-model="vm.user.email" required overwrite-email />
+                        <span class="help-block" ng-show="form.inputEmail.$error.required && (form.$submitted || form.inputEmail.$touched) ">
+                            Email is required.
+                        </span>
+                        <span class="help-block" ng-show="form.inputEmail.$error.email && (form.$submitted || form.inputEmail.$touched) ">
+                            Email must be valid. Expected domain: @example.com
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Gender:</label>
+                    <div class="col-sm-10">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" ng-model="vm.user.gender" value="male"/>Male
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="gender" ng-model="vm.user.gender" value="female"/>Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{ 'has-error': form.desc.$invalid && (form.$submitted || form.desc.$touched) }">
+                    <label for="desc" class="col-sm-2 control-label">Description:</label>
+                    <div class="col-sm-10">
+                        <div id="desc" name="desc" contenteditable ng-model="vm.user.description" required>Please enter your description here...</div>
+                        <span class="help-block" ng-show="form.desc.$error.required && (form.$submitted || form.desc.$touched) ">
+                            Description is required.
+                        </span>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-default" ng-click="vm.reset()" value="Reset"/>
+                <input type="submit" class="btn btn-primary" ng-click="vm.update(vm.user)" value="Submit"/>
+            </form>
+
+            <h2>User</h2>
+            <pre>user = {{ vm.user | json }}</pre>
+
+            <h2>Master</h2>
+            <pre>master = {{ vm.master | json }}</pre>
+
+        </div>
+    </div>
+</div>
