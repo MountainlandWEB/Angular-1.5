@@ -1,0 +1,51 @@
+<html ng-app="myApp">
+<head>
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body layout="row">
+
+<sidenav></sidenav>
+
+<div layout="column" flex id="wrapper">
+    <!--<div ng-include="'dist/view/toolbar-header.html'"></div>-->
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button hide-gt-sm ng-click="vm.toggleSideNav()" class="md-icon-button">
+                Toggle
+            </md-button>
+            <h1 ui-sref="main" class="clickable">Star Wars App</h1>
+        </div>
+    </md-toolbar>
+    <md-content flex id="content">
+        <!--<div ng-include="'dist/view/main-content.html'"></div>-->
+        <ui-view></ui-view>
+        <my-footer></my-footer>
+    </md-content>
+</div>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
+
+<!-- ui router library -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+<!-- app.js must be FIRST, since the component is added to it -->
+<script src="app.js"></script>
+<script src="characters/char-list.component.js"></script>
+<script src="characters/char-detail.component.js"></script>
+<script src="about/about.component.js"></script>
+<script src="services/character.service.js"></script>
+<script src="sidenav/sidenav.component.js"></script>
+
+</body>
+</html>
