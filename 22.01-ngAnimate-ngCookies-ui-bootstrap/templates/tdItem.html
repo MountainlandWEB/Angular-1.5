@@ -1,0 +1,8 @@
+    <td>{{ tc.index }}</td>
+    <td>
+        <label class="item-label" ng-class="{ 'completed-item': tc.item.completed }">
+            <input type="checkbox" ng-model="tc.item.completed"> {{ tc.item.title }}</label>
+    </td>
+    <td ng-click="tc.openEditModal(tc.index)">
+        Edit
+    </td>
