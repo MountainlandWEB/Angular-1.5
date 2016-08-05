@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ngToDo - storage and animation</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="basicApp">
+
+    <!-- the navbar has been moved to a separate file -->
+    <ng-include src="'templates/navbar.html'"></ng-include>
+
+    <!-- this is where the router loads the page templates
+    -->
+    <div ui-view class="top-margin"></div>
+
+    <!-- external js files -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- our js files -->
+    <script src="js/navController.js"></script>
+    <script src="js/homeController.js"></script>
+    <script src="js/homeService.js"></script>
+    <script src="js/homeDirectives.js"></script>
+
+    <!-- load app.js last -->
+    <script src="js/app.js"></script>
+
+</body>
+</html>
