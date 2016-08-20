@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars Characters App (With $firebaseObject)</title>
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<div layout="column" flex id="wrapper">
+    <!--<div ng-include="'dist/view/toolbar-header.html'"></div>-->
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button hide-gt-sm ng-click="vm.toggleSideNav()" class="md-icon-button">
+                <md-icon md-font-set="material-icons">menu</md-icon>
+            </md-button>
+            <h1 ui-sref="main" class="clickable">Star Wars App (With $firebaseObject)</h1>
+        </div>
+    </md-toolbar>
+    <md-content flex id="content">
+        <div ui-view="char-detail"></div>
+    </md-content>
+</div>
+
+<!--===================================== JavaScript Libraries ======================================================-->
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
+
+<!-- ui router library -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+<!--Step #1: Add Firebase and AngularFire library dependencies-->
+<!-- Firebase    --> <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<!-- AngularFire --> <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+<!--Step #2: Initialize Firebase SDK -->
+<script>
+    var config = {
+        apiKey: "AIzaSyD4io1mClMuRQJLh6aMjq21zgOSo5Zrl8k",
+        authDomain: "star-wars-chars-4148e.firebaseapp.com",
+        databaseURL: "https://star-wars-chars-4148e.firebaseio.com",
+        storageBucket: "",
+    };
+    firebase.initializeApp(config);
+</script>
+
+<!-- app -->
+<script src="app.js"></script>
+<script src="characters/char-detail.component.js"></script>
+
+
+</body>
+</html>
