@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="app">
 <head>
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.css">
@@ -40,6 +40,21 @@
 
 <!-- ui router library -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+<!--Step #1: Add Firebase and AngularFire library dependencies-->
+<!-- Firebase    --> <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<!-- AngularFire --> <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+<!--Step #2: Initialize Firebase SDK -->
+<script>
+    var config = {
+        apiKey: "AIzaSyD4io1mClMuRQJLh6aMjq21zgOSo5Zrl8k",
+        authDomain: "star-wars-chars-4148e.firebaseapp.com",
+        databaseURL: "https://star-wars-chars-4148e.firebaseio.com",
+        storageBucket: "",
+    };
+    firebase.initializeApp(config);
+</script>
 
 <!-- app.js must be FIRST, since the component is added to it -->
 <script src="app.js"></script>
