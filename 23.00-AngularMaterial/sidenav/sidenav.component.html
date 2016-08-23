@@ -1,0 +1,19 @@
+<div layout="vertical">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+        <md-toolbar>
+            <h1>Characters</h1>
+        </md-toolbar>
+        <md-content>
+            <md-list>
+                <md-list-item ng-repeat="char in $ctrl.characters">
+                    <md-button ng-class=" { 'selected': character === $ctrl.selectedChar } ">
+                        <md-icon class="avatar" md-svg-icon=""> </md-icon>
+                        {{ char.name }}
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
+</div>
