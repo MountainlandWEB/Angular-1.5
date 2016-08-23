@@ -1,0 +1,39 @@
+<div flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Character Details</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-content layout-padding>
+            <form name="characterForm">
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input ng-model="vm.char.name">
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container>
+                        <label>Height</label>
+                        <input type="number" ng-model="vm.char.height">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Mass</label>
+                        <input type="number" ng-model="vm.char.mass">
+                    </md-input-container>
+                </div>
+            </form>
+        </md-content>
+
+        <md-card-actions layout="row" layout-align="start center">
+            <md-card-icon-actions>
+                <md-button ng-click="vm.delete()">Delete</md-button>
+            </md-card-icon-actions>
+            <md-button ng-click="vm.save()">Save</md-button>
+        </md-card-actions>
+
+    </md-card>
+</div>
