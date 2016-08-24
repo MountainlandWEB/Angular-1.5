@@ -29,6 +29,7 @@
         vm.add = add;
         vm.deleteChar = deleteChar;
         vm.login = login;
+        vm.logout = logout;
 
         function login(provider) {
             var auth = $firebaseAuth();
@@ -36,11 +37,17 @@
             // login with Facebook
             auth.$signInWithPopup(provider).then(function(firebaseUser) {
                 $log.log(firebaseUser);
-                $log.log("Signed in as:", firebaseUser.uid);
                 vm.displayName = firebaseUser.user.displayName;
             }).catch(function(error) {
                 $log.log("Authentication failed:", error);
             });
+        }
+
+        function logout() {
+            var auth = $firebaseAuth();
+            $log.log(vm.displayName + " logged out");
+            auth.$signOut();
+            vm.displayName = undefined;
         }
 
         function close() {
