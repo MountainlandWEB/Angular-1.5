@@ -1,0 +1,15 @@
+<div ng-show="$ctrl.photo">
+    <div class="close-x" ng-click="$ctrl.close()">x</div>
+    <br clear="both" />
+    <div><img ng-src="{{ $ctrl.photo.url }}" class="fullImage"></div>
+    <br clear="both" />
+    <div>Title: {{ $ctrl.photo.title }}</div>
+    <div ng-show="$ctrl.photo.photographer">
+        Photog: {{ $ctrl.photo.photographer }}
+    </div>
+    <br />
+    <button ng-click="$ctrl.save()">Save</button>
+    <br />
+    <div ng-show="$ctrl.saved">Saved!</div>
+    <div ng-show="$ctrl.error">Error saving</div>
+</div>

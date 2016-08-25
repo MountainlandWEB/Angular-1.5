@@ -1,0 +1,24 @@
+<h1>My Example</h1>
+
+Add RED error CSS class if it's not a valid email address.
+
+<div>
+    <input type="text" ng-model="$ctrl.email" ng-change="$ctrl.doChange()"
+           ng-class="{ 'email-error': $ctrl.hasError }">
+</div>
+<br />
+
+Add GREEN success CSS class if it's valid, RED error class if it's not.
+
+<div>
+    <input type="text" ng-model="$ctrl.email" ng-change="$ctrl.doChange()"
+           ng-class="$ctrl.hasError ? 'email-error' : 'email-success'">
+</div>
+<br />
+
+Add emoji if matches my name.
+
+<div ng-class="{ 'emoji-class': $ctrl.nameMatches }">
+    <input type="text" ng-model="$ctrl.name" ng-change="$ctrl.changedName()">
+</div>
+<br />

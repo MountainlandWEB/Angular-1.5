@@ -1,0 +1,20 @@
+/* app styles go here */
+body {
+    font-family: Arial, SansSerif;
+}
+h1 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: deepskyblue;
+    padding: .3em;
+}
+.email-error {
+    border: 3px red solid;
+}
+
+.email-success {
+    border: 3px green solid;
+}
+.emoji-class:after {
+    content: '\a0\1F601';
+}
