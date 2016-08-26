@@ -43,4 +43,19 @@
     <md-button ng-if="vm.displayName" class="md-raised" ng-click="vm.logout()">You are {{ vm.displayName }}</md-button>
     <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('facebook')">Login with Facebook</md-button>
     <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('google')">Login with Google</md-button>
+    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.showEmailLogin()">Login with Email</md-button>
 </div>
+
+<md-content layout-padding ng-show="vm.showLogin">
+    <md-input-container>
+        <label>Email</label>
+        <input type="email" id="email" ng-model="vm.email" required>
+    </md-input-container>
+    <md-input-container>
+        <label for="password">Password</label>
+        <input type="password" id="password" ng-model="vm.password" required>
+    </md-input-container>
+    <md-input-container>
+        <md-button class="md-raised md-primary" ng-click="vm.loginWithEmail()">Login</md-button>
+    </md-input-container>
+</md-content>

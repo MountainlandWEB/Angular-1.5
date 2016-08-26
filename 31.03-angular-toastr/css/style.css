@@ -1,0 +1,61 @@
+/* app styles go here */
+body {
+    font-family: Arial, SansSerif;
+}
+h1 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: deepskyblue;
+    padding: .3em;
+}
+th {
+    text-align: left;
+}
+td, th {
+    padding: 5px;
+}
+.row-shadow td {
+    background-color: #ddd;
+}
+.hover-row td {
+    background-color: lightgreen;
+}
+.selected-row td {
+    background-color: deepskyblue;
+}
+.list-div > table {
+    border: 1px solid #bbb;
+    border-collapse: collapse;
+    cursor: default;
+    margin-bottom: 20px;
+}
+.sortable {
+    cursor: s-resize; /* down-arrow */
+}
+.clickable {
+    cursor: default;
+}
+th.sort-asc:after {
+    content: '\a0\2193'; /* space down-arrow */
+}
+th.sort-desc:after {
+    content: '\a0\2191'; /* space up-arrow */
+}
+th.sort-none:after {
+    content: '\a0\a0'; /* space space */
+}
+.list-div, .detail-div {
+    float: left;
+    padding-right: 20px;
+}
+.close-x {
+    float: right;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    border: gray 1px solid;
+    background-color: lightgray;
+    color: dimgray;
+    text-align: center;
+    font-size: .7em;
+}
