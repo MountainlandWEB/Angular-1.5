@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Mode Demo</title>
+
+    <!-- Step #1: add the base HTML tag and point it to the right location -->
+    <base href="/Angular-1.5/32.01-Angular-HTML5Mode-END/"/>
+</head>
+<body>
+
+<a ui-sref="main">Main</a>
+<a ui-sref="contact">Contact</a>
+<a ui-sref="about">About</a>
+
+<div ui-view></div>
+
+
+<!-- Angular Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<!-- ui router library -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+<!-- App Dependencies -->
+<script src="app.js"></script>
+<script src="main/main.component.js"></script>
+<script src="contact/contact.component.js"></script>
+<script src="about/about.component.js"></script>
+
+</body>
+</html>
