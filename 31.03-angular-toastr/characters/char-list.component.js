@@ -42,6 +42,7 @@
         }
 
         function selectChar(char) {
+            toastr.info(char.name + ' selected');
             self.selectedChar = characterService.selectedChar = char;
             var dialog = ngDialog.open({
                 template: 'characters/char-detail.component.html',
