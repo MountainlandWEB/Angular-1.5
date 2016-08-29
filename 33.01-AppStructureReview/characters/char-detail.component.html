@@ -1,0 +1,61 @@
+<div flex-xs flex-gt-xs="50" layout="column" ng-if="vm.character">
+    <md-card>
+
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Character Details</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-content layout-padding>
+            <form name="characterForm">
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input ng-model="vm.character.name">
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container>
+                        <label>Height</label>
+                        <input type="number" ng-model="vm.character.height">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Mass</label>
+                        <input type="number" ng-model="vm.character.mass">
+                    </md-input-container>
+                </div>
+            </form>
+        </md-content>
+
+        <md-card-actions layout="row" layout-align="start center">
+            <md-card-icon-actions>
+                <md-button ng-click="vm.deleteChar()">Delete</md-button>
+            </md-card-icon-actions>
+            <md-button ng-click="vm.close()">Close</md-button>
+            <md-button ng-click="vm.save()">Save</md-button>
+            <md-button ng-click="vm.add()">Add</md-button>
+        </md-card-actions>
+
+
+    </md-card>
+
+    <md-button ng-if="vm.displayName" class="md-raised" ng-click="vm.logout()">You are {{ vm.displayName }}</md-button>
+    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('facebook')">Login with Facebook</md-button>
+    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('google')">Login with Google</md-button>
+    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.showEmailLogin()">Login with Email</md-button>
+</div>
+
+<md-content layout-padding ng-show="vm.showLogin">
+    <md-input-container>
+        <label>Email</label>
+        <input type="email" id="email" ng-model="vm.email" required>
+    </md-input-container>
+    <md-input-container>
+        <label for="password">Password</label>
+        <input type="password" id="password" ng-model="vm.password" required>
+    </md-input-container>
+    <md-input-container>
+        <md-button class="md-raised md-primary" ng-click="vm.loginWithEmail()">Login</md-button>
+    </md-input-container>
+</md-content>
