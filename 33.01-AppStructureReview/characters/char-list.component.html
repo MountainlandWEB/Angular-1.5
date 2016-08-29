@@ -1,0 +1,26 @@
+<div layout-padding>
+    <md-autocomplete
+            md-search-text="$ctrl.searchText"
+            md-items="item in $ctrl.characters | filter:$ctrl.searchText"
+            md-item-text="item.name"
+            md-min-length="1"
+            placeholder="filter">
+        <md-item-template>
+            <span md-highlight-text="$ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+        </md-item-template>
+        <md-not-found>
+            No user matching "{{$ctrl.searchText}}" were found.
+        </md-not-found>
+    </md-autocomplete>
+</div>
+<md-content class="scrollable-nav-content">
+    <md-list>
+        <md-list-item ng-repeat="character in $ctrl.characters | filter:$ctrl.searchText | orderBy:'name'">
+            <md-button ng-click="$ctrl.selectChar(character)"
+                       ng-class="{'selected': character === $ctrl.selectedChar }">
+                <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
+                {{character.name}}
+            </md-button>
+        </md-list-item>
+    </md-list>
+</md-content>
