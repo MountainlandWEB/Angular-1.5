@@ -3,50 +3,47 @@
     angular.module('app')
         .service('Character', Character);
 
-    function Character($firebaseArray, $log) {
-        var self = this;
+    function Character($firebaseArray) {
 
+        // private properties
         var ref = firebase.database().ref().child("characters");
-        var characters = $firebaseArray(ref);
-        var selectedChar = undefined;
 
-        self.getList = getList;
-        self.setSelected = function(char) { selectedChar = char; }
-        self.getSelected = function() { return selectedChar; }
+        // Character properties
+        var self = this;
+        self.characters = $firebaseArray(ref);
+        self.selectedChar = undefined;
+
+        // Character functions
         self.getRandomCharacter = getRandomCharacter;
         self.save = save;
         self.add = add;
         self.remove = remove;
 
-        function getList() {
-            return characters;
-        }
-
         function getRandomCharacter() {
-            return characters[Math.floor(Math.random() * characters.length)];
-        }
-
-        function init() {
-            $log.log(characters);
-            for (var c = 0, clen = characters.length; c < clen; c++) {
-                characters[c].weight = characters[c].mass * 2.20462;
-            }
-            selectedChar = getRandomCharacter();
+            return self.characters[Math.floor(Math.random() * self.characters.length)];
         }
 
         function save(char) {
-            characters.$save(char);
+            self.characters.$save(char);
         }
 
         function add(char) {
-            characters.$add(char);
+            self.characters.$add(char);
         }
 
         function remove(char) {
-            characters.$remove(char);
+            self.characters.$remove(char);
         }
 
-        characters.$loaded().then(function () {
+        // Character private functions
+        function init() {
+            for (var c = 0, clen = self.characters.length; c < clen; c++) {
+                self.characters[c].weight = self.characters[c].mass * 2.20462;
+            }
+            self.selectedChar = getRandomCharacter();
+        }
+
+        self.characters.$loaded().then(function () {
             init();
         })
     }

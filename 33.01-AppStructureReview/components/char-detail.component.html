@@ -30,20 +30,21 @@
 
         <md-card-actions layout="row" layout-align="start center">
             <md-card-icon-actions>
-                <md-button ng-click="vm.deleteChar()">Delete</md-button>
+                <md-button ng-disabled="!vm.displayName" ng-click="vm.deleteChar()">Delete</md-button>
             </md-card-icon-actions>
             <md-button ng-click="vm.close()">Close</md-button>
-            <md-button ng-click="vm.save()">Save</md-button>
-            <md-button ng-click="vm.add()">Add</md-button>
+            <md-button ng-disabled="!vm.displayName" ng-click="vm.save()">Save</md-button>
+            <md-button ng-disabled="!vm.displayName" ng-click="vm.add()">Add</md-button>
         </md-card-actions>
 
 
     </md-card>
 
     <md-button ng-if="vm.displayName" class="md-raised" ng-click="vm.logout()">You are {{ vm.displayName }}</md-button>
-    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('facebook')">Login with Facebook</md-button>
-    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('google')">Login with Google</md-button>
-    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.showEmailLogin()">Login with Email</md-button>
+    <h3 ng-if="!vm.displayName">Please log in to edit character data:</h3>
+    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('facebook')">Log in with Facebook</md-button>
+    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.login('google')">Log in with Google</md-button>
+    <md-button ng-if="!vm.displayName" class="md-raised md-primary" ng-click="vm.showEmailLogin()">Log in with Email</md-button>
 </div>
 
 <md-content layout-padding ng-show="vm.showLogin">
@@ -53,9 +54,12 @@
     </md-input-container>
     <md-input-container>
         <label for="password">Password</label>
-        <input type="password" id="password" ng-model="vm.password" required>
+        <input type="password" id="password" ng-model="vm.password" required
+               ng-keypress="($event.which === 13) ? vm.loginWithEmail(): 0">
     </md-input-container>
     <md-input-container>
-        <md-button class="md-raised md-primary" ng-click="vm.loginWithEmail()">Login</md-button>
+        <md-button class="md-raised md-primary" ng-click="vm.loginWithEmail()">Log in</md-button>
     </md-input-container>
 </md-content>
+
+<h3 ng-show="vm.errorMessage">{{ vm.errorMessage }}</h3>
