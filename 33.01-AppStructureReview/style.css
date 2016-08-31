@@ -23,8 +23,8 @@ md-list .md-button {
     text-align: left;
     width: 100%;
 }
-md-list .md-button.selected {
-    color: #03a9f4;
+md-list-item.selected {
+    background-color: #03a9f4 !important;
 }
 
 md-sidenav  md-list {

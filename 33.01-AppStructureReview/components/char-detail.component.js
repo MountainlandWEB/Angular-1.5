@@ -2,7 +2,7 @@
 
     angular.module('app')
         .component('charDetail', { // the tag for using this is <char-detail>
-            templateUrl: "characters/char-detail.component.html",
+            templateUrl: "components/char-detail.component.html",
             controller: charDetailController,
             controllerAs: 'vm'
         })
@@ -16,41 +16,52 @@
     }
 
     function charDetailController(Character, User) {
+
+        // component properties
         var vm = this;
         vm.showLogin = false;
         vm.email = undefined;
         vm.password = undefined;
-        vm.displayName = User.getDisplayName();
+        vm.displayName = User.displayName;
+        vm.errorMessage = undefined;
+        vm.character = Character.selectedChar;
 
-        vm.character = Character.getSelected();
-
-        vm.close = close;
-        vm.save = save;
-        vm.add = add;
-        vm.deleteChar = deleteChar;
+        // component functions
         vm.showEmailLogin = showEmailLogin;
         vm.login = login;
         vm.loginWithEmail = loginWithEmail;
         vm.logout = logout;
+        vm.close = close;
+        vm.save = save;
+        vm.add = add;
+        vm.deleteChar = deleteChar;
 
         function showEmailLogin() {
             vm.showLogin = !vm.showLogin;
         }
 
-        function loginWithEmail() {
-            User.loginWithEmail(vm.email, vm.password)
+        function login(provider) {
+            vm.errorMessage = undefined;
+            User.login(provider)
                 .then(function () {
-                    vm.displayName = User.getDisplayName();
+                    vm.displayName = User.displayName;
                     vm.showLogin = false;
-                    vm.password = undefined;
                 });
         }
 
-        function login(provider) {
-            User.login(provider)
+        function loginWithEmail() {
+            vm.errorMessage = undefined;
+            User.loginWithEmail(vm.email, vm.password)
                 .then(function () {
-                    vm.displayName = User.getDisplayName();
-                    vm.showLogin = false;
+                    if (User.displayName) {
+                        vm.displayName = User.displayName;
+                        vm.showLogin = false;
+                        vm.password = undefined;
+                    } else {
+                        vm.errorMessage = "Error. Please try again.";
+                    }
+                }, function(error) {
+                    vm.errorMessage = error.message;
                 });
         }
 
@@ -61,7 +72,7 @@
 
         function close() {
             vm.character = undefined;
-            Character.setSelected(undefined);
+            Character.selectedChar = undefined;
         }
 
         function save() {

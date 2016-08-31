@@ -2,23 +2,23 @@
 
     angular.module('app')
         .component('charList', { // the tag for using this is <char-list>
-            templateUrl: "characters/char-list.component.html",
+            templateUrl: "components/char-list.component.html",
             controller: charListController
         });
 
     function charListController(Character, $state) {
 
-        // variables
+        // component properties
         var self = this;
         self.searchText = '';
-        self.characters = Character.getList();
-        self.selectedChar = Character.getSelected();
+        self.characters = Character.characters;
+        self.selectedChar = Character.selectedChar;
 
-        // functions
+        // component functions
         self.selectChar = selectChar;
 
         function selectChar(char) {
-            Character.setSelected(char);
+            Character.selectedChar = self.selectedChar = char;
             $state.go('main', {}, {reload: true});
         }
 
