@@ -1,6 +1,16 @@
 <div ng-if="$ctrl.character">
-    <table>
-        <tr><th></th><td><div class="close-x" ng-click="$ctrl.close()">x</div></td></tr>
-        <tr><th>Name:</th><td>{{ $ctrl.character.name }}</td></tr>
-    </table>
+    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{$ctrl.character.name}}</span>
+                <span class="md-subhead">Description</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="md-media-lg card-media"></div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="$ctrl.close()">Close</md-button>
+        </md-card-actions>
+    </md-card>
 </div>
