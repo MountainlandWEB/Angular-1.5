@@ -1,10 +1,3 @@
-/*
-
-1. remove the "this is required" spans and replace with disabling the submit button
-2. require gender to be filled out before name can be valid and required for submission
-
- */
-
 (function () {
     angular.module('app')
         .component('myForm', {
