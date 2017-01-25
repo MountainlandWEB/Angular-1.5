@@ -1,6 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
+            <form>
+                <input id="inputName2" name="inputName2" class="form-control" type="text" ng-model="vm.user.name1" required />
+                <input type="submit" >
+            </form>
 
             <h2>Basic Form (excercise #3)</h2>
             <form novalidate name="form" class="form-horizontal css-form">
@@ -8,9 +12,19 @@
                 <div class="form-group" ng-class="{ 'has-error': form.inputName.$invalid && (form.$submitted || form.inputName.$touched) }">
                     <label for="inputName" class="col-sm-2 control-label">Name:</label>
                     <div class="col-sm-10">
-                        <input id="inputName" name="inputName" class="form-control" type="text" ng-model="vm.user.name" ng-model-options="{ updateOn: 'blur mousedown' }" required />
-                        <span class="help-block" ng-show="form.inputName.$invalid && (form.$submitted || form.inputName.$touched) ">
-                            Name is required.
+                        <input
+                                id="inputName"
+                                name="inputName"
+                                class="form-control"
+                                type="text"
+                                ng-model="vm.user.name"
+                                ng-model-options="{ updateOn: 'blur mousedown' }"
+                                required
+                                ng-click="form.inputName.$touched = true"
+                                ng-disabled="form.inputName.$touched && !vm.user.gender"
+                        />
+                        <span class="help-block" ng-show="form.inputName.$touched && !vm.user.gender">
+                            Can't touch this. Select gender first.
                         </span>
                     </div>
                 </div>
@@ -45,7 +59,7 @@
                 </div>
 
                 <input type="button" class="btn btn-default" ng-click="vm.reset()" value="Reset"/>
-                <input type="submit" class="btn btn-primary" ng-click="vm.update(vm.user)" value="Submit"/>
+                <input type="submit" class="btn btn-primary" ng-disabled="form.$invalid" ng-click="vm.update(vm.user)" value="Submit"/>
             </form>
 
             <h2>User</h2>
@@ -53,6 +67,9 @@
 
             <h2>Master</h2>
             <pre>master = {{ vm.master | json }}</pre>
+
+            <h2>form.$invalid</h2>
+            <pre>{{form.$invalid}}</pre>
 
         </div>
     </div>
