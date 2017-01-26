@@ -1,8 +1,19 @@
+var testVar = 'Dar';
 (function(){
 
     angular.module('myApp')
+<<<<<<< HEAD
+<<<<<<< HEAD
+        .component('myExample', { // the tag for using this is <my-example>
+            templateUrl: "my-example/my-example.component.html",
+=======
         .component('myExample', { // the tag for using this is <characters>
             templateUrl: "characters/characters.component.html",
+>>>>>>> 58c113a863c78b2ec610c1de0035dd213cf5cb5d
+=======
+        .component('myExample', { // the tag for using this is <characters>
+            templateUrl: "characters/characters.component.html",
+>>>>>>> 16354d4b820208f053a05cdedecd2da2c6f4dd05
             controller: myExampleController
         });
 
@@ -11,16 +22,40 @@
         var self = this;
         self.sort = 'name';
         self.getWeightInPounds = getWeightInPounds;
+<<<<<<< HEAD
+<<<<<<< HEAD
+        self.sortByThis = sortByThis;
+        self.sortBy = '';
+=======
         self.setSort = setSort;
+>>>>>>> 58c113a863c78b2ec610c1de0035dd213cf5cb5d
+=======
+        self.setSort = setSort;
+>>>>>>> 16354d4b820208f053a05cdedecd2da2c6f4dd05
 
         function getWeightInPounds(character) {
+            //console.log(character);
             return character.mass * 2.20462;
         }
+<<<<<<< HEAD
+        function sortByThis(){
+            self.sortBy = term;
+            console.log("clicked");
+        }
+=======
 
         function setSort(sort) {
             self.sort = sort;
         }
 
+<<<<<<< HEAD
+>>>>>>> 58c113a863c78b2ec610c1de0035dd213cf5cb5d
+=======
+        function setSort(sort) {
+            self.sort = sort;
+        }
+
+>>>>>>> 16354d4b820208f053a05cdedecd2da2c6f4dd05
         // sample data from swapi.co
         self.characters = [
             {

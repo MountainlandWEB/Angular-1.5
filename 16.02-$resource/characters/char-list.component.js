@@ -20,14 +20,14 @@
         var self = this;
         self.orderBy = 'name';
         self.sortClass= 'sort-asc';
-        self.columns = ['thumbnailUrl','title'];
+        self.columns = ['title','body'];
 
-        // self.characters = Character.query();
+        self.characters = Character.query();
 
-        characterService.getCharacters().then(function(){
-            self.characters = characterService.characters;
-            self.selectedChar = characterService.selectedChar;
-        });
+        // characterService.getCharacters().then(function(){
+        //     self.characters = characterService.characters;
+        //     self.selectedChar = characterService.selectedChar;
+        // });
 
         // CONTROLLER FUNCTIONS (PUBLIC)
         self.sort = sort;
