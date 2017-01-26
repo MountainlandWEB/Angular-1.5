@@ -11,13 +11,14 @@
         var self = this;
         self.sort = 'name';
         self.getWeightInPounds = getWeightInPounds;
-        self.setSort = setSort;
+        self.sort = 'name';
+        self.sorting = sorting;
 
         function getWeightInPounds(character) {
             return character.mass * 2.20462;
         }
-
-        function setSort(sort) {
+        
+        function sorting (sort) {
             self.sort = sort;
         }
 
